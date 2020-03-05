@@ -2,7 +2,7 @@
 
 console.log("Hola David, este es el simulador de dados de Carlos");
 
-let dice = function() {
+const dice = function() {
   console.log(Math.ceil(Math.random() * 6));
 };
 
