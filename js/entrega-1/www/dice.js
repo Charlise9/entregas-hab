@@ -9,7 +9,13 @@ const dice = function() {
 let tiradas = 0;
 
 for (let contador = 0; contador <= 50; contador = contador + dice()) {
-  console.log(
-    `Tirada ${tiradas++}: ha salido un ${dice()}.Tienes un total de ${contador} puntos`
-  );
+  if (contador < 50) {
+    console.log(
+      `Tirada ${tiradas++}: ha salido un ${dice()}.Tienes un total de ${contador} puntos`
+    );
+  } else {
+    console.log(
+      `¡Enhorabuena, ha salido un ${dice()}! ¡Has ganado con un total de ${contador} puntos!`
+    );
+  }
 }
