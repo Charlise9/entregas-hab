@@ -6,6 +6,8 @@ let teamMaria = [62, 34, 55];
 let teamPaula = [35, 60, 59];
 let teamRebeca = [40, 39, 63];
 
+//EJERCICIO RESUELTO
+
 function media(team) {
   return (team[0] + team[1] + team[2]) / team.length;
 }
