@@ -49,21 +49,3 @@ if (
     )}`
   );
 }
-
-/**switch (team) {
-  case media(teamMaria) > media(teamPaula) &&
-    media(teamMaria) > media(teamRebeca):
-    console.log(
-      `La media más alta es la del equipo de María con ${Math.round(
-        media(teamMaria)
-      )} `
-    );
-    break;
-  default:
-    console.log(
-      `La media más alta es la del equipo de Rebeca con ${Math.round(
-        media(teamRebeca)
-      )} `
-    );
-}
-*/

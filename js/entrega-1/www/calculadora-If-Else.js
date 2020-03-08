@@ -2,11 +2,10 @@
 
 console.log("Hola David, esta es la calculadora else if de Carlos");
 
-const number1 = 5;
+const number1 = prompt("Elige el primer número de la operación");
+const number2 = prompt("Elije el segundo número de la operación");
 
-const number2 = 3;
-
-let option = prompt("Teclea un tipo de operación matemática");
+const option = prompt("Teclea un tipo de operación matemática");
 
 if (option === "+") {
   console.log(

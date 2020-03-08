@@ -2,21 +2,21 @@
 
 console.log("Hola David, esta es la calculadora Switch de Carlos");
 
-let numberA = 5;
-let numberB = 3;
+const numberA = prompt("Elige el primer número de la operación");
+const numberB = prompt("Elije el segundo número de la operación");
 
-let option = prompt("Teclea un tipo de operación matemática");
+const option = prompt("Teclea un tipo de operación matemática");
 
 switch (option) {
   case "+":
     console.log(
-      `Has elegido sumar ${numberA} y ${numberB}: el resultado es ${numberA +
+      `Has elegido sumar ${numberA} más ${numberB}: el resultado es ${numberA +
         numberB}`
     );
     break;
   case "-":
     console.log(
-      `Has elegido restar ${numberA} y ${numberB}: el resultado es ${numberA -
+      `Has elegido restar ${numberA} menos ${numberB}: el resultado es ${numberA -
         numberB}`
     );
     break;
@@ -28,7 +28,7 @@ switch (option) {
     break;
   case "/":
     console.log(
-      `Has elegido dividir ${numberA} por ${numberB}: el resultado es ${numberA /
+      `Has elegido dividir ${numberA} entre ${numberB}: el resultado es ${numberA /
         numberB}`
     );
     break;

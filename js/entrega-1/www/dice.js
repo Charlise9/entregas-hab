@@ -6,19 +6,19 @@ const dice = function() {
   return Math.ceil(Math.random() * 6);
 };
 
-let tiradas = 1;
-let puntosAcumulados = 0;
+let rounds = 1;
+let accumulatedPoints = 0;
 
-while (puntosAcumulados < 50) {
-  let tiradaDado = dice();
-  puntosAcumulados = puntosAcumulados + tiradaDado;
-  if (puntosAcumulados < 50) {
+while (accumulatedPoints < 50) {
+  let diceThrow = dice();
+  accumulatedPoints = accumulatedPoints + diceThrow;
+  if (accumulatedPoints < 50) {
     console.log(
-      `Tirada ${tiradas++}: ha salido un ${tiradaDado}.Tienes un total de ${puntosAcumulados} puntos`
+      `Tirada ${rounds++}: ha salido un ${diceThrow}.Tienes un total de ${accumulatedPoints} puntos`
     );
   } else {
     console.log(
-      `¡Enhorabuena, ha salido un ${tiradaDado}! ¡Has ganado con un total de ${puntosAcumulados} puntos!`
+      `¡Enhorabuena, ha salido un ${diceThrow}! ¡Has ganado con un total de ${accumulatedPoints} puntos!`
     );
   }
 }
