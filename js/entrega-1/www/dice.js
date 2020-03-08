@@ -8,17 +8,16 @@ const dice = function() {
 
 let rounds = 1;
 let accumulatedPoints = 0;
+let diceThrow;
 
 while (accumulatedPoints < 50) {
-  let diceThrow = dice();
+  diceThrow = dice();
   accumulatedPoints = accumulatedPoints + diceThrow;
-  if (accumulatedPoints < 50) {
-    console.log(
-      `Tirada ${rounds++}: ha salido un ${diceThrow}.Tienes un total de ${accumulatedPoints} puntos`
-    );
-  } else {
-    console.log(
-      `¡Enhorabuena, ha salido un ${diceThrow}! ¡Has ganado con un total de ${accumulatedPoints} puntos!`
-    );
-  }
+
+  console.log(
+    `Tirada ${rounds++}: ha salido un ${diceThrow}.Tienes un total de ${accumulatedPoints} puntos`
+  );
 }
+console.log(
+  `¡Enhorabuena, ha salido un ${diceThrow}! ¡Has ganado con un total de ${accumulatedPoints} puntos!`
+);
