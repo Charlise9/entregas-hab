@@ -1,7 +1,7 @@
 "use strict";
 
-function longestWord(string) {
-  let phrase = string.split(" ");
+function letterCount(str) {
+  let phrase = str.split(" ");
   let longest = 0;
   let word = null;
   for (let i = 0; i < phrase.length; i++) {
@@ -13,4 +13,4 @@ function longestWord(string) {
   return word;
 }
 
-console.log(longestWord("Hoy es un día estupendo y fantástico"));
+console.log(letterCount("Hoy es un día estupendo y fantástico"));
