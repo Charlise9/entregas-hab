@@ -5,17 +5,11 @@ let a = ["Arriba", "la", "birra"];
 let b = a.join("");
 let c = b.toLocaleLowerCase();
 
-function contarDesdeElPrincipio() {
+function palindrome() {
   for (let i = 0; i < c.length; i++) {
-    console.log(c[i]);
+    if (c[i] !== c[c.length - i - 1]) {
+      return "No es un palíndromo";
+    }
   }
+  return "Es un palíndromo";
 }
-
-function contarDesdeElFinal() {
-  for (let i = c.length - 1; i >= 0; i--) {
-    console.log(c[i]);
-  }
-}
-
-let x = contarDesdeElPrincipio();
-let y = contarDesdeElFinal();
