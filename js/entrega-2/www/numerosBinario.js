@@ -2,13 +2,13 @@
 
 function binaryConverter(string) {
   let decimal = 0;
-  let bits = 1;
+  let multipliyer = 1;
   for (let i = 0; i < string.length; i++) {
-    let currNum = +string[string.length - 1 - i];
-    if (currNum === 1) {
-      decimal = decimal + bits;
+    let currentNumber = +string[string.length - 1 - i];
+    if (currentNumber === 1) {
+      decimal = decimal + multipliyer;
     }
-    bits = bits * 2;
+    multipliyer = multipliyer * 2;
   }
   console.log(decimal);
 }
