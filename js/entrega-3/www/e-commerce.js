@@ -21,8 +21,6 @@ class Item {
   }
 }
 
-// elaboramos un array con todos los items a la venta y sus precios:
-
 const inventary = itemNames.map((name, index) => {
   return new Item(name, itemPrices[index]);
 });
@@ -32,7 +30,6 @@ class User {
 
   addItems(item) {
     let foundItem = this.#carrito.find((element) => {
-      //console.log(element, item);
       return element.itemData.itemType === item.itemType;
     });
     if (foundItem) {
@@ -40,13 +37,6 @@ class User {
     } else {
       this.#carrito.push({ itemData: item, ammount: 1 });
     }
-
-    // Primero busco si está en el carrito
-
-    // Si no habia, lo meto
-    //else {s
-    //Si existia le incremento las unidades
-    //
   }
 
   leerCarrito() {
@@ -64,7 +54,6 @@ myUser.addItems(inventary[2]);
 myUser.addItems(inventary[2]);
 myUser.addItems(inventary[2]);
 myUser.addItems(inventary[2]);
-//console.log(myUser);
 
 class Shop {
   carrito;
@@ -88,6 +77,6 @@ class Shop {
 }
 
 const ticket = new Shop(myUser);
-//console.log(ticket);
+
 console.log(ticket.getTicket());
 ticket.getTotal();
