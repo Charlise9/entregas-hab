@@ -1,0 +1,9 @@
+users (#id, name, surname, dni, mail, phone_number, account_number)
+vehicles (#id, model, brand, kind_of_vehicle, number_plate)
+registries (#id, initial_park_time, final_park_time, payment)
+districts(#id, neighborhood_name, initial_time, final_time, price_per_minute, time_limit, observation, -id_registry)
+penalties (#id, quantity, -id_registry, -id_reclamation)
+reclamations (#id, processing, status, date, motive, -id_user)
+users_vehicles(#[-id_user, -id_vehicle])
+users_registries(#[-id_user, -id_registry])
+
