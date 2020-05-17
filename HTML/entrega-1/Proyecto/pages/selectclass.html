@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="copyrignth" content="Carlos Barrientos Guillén" />
-    <title>!BIENVENIDO A DRAGONES Y MAZMORRAS!</title>
+    <title>Partida Nueva</title>
     <!-- ESTILOS -->
     <style>
       html {
@@ -38,7 +38,118 @@
     </nav>
     <!-- /NAV -->
     <!-- MAIN -->
-    <main></main>
+    <main>
+      <!-- CABECERA -->
+      <div>
+        <h1>Has empezado una partida nueva en Dragones y Mazorras</h1>
+        <h3>Creación de personaje</h3>
+      </div>
+
+      <!-- /CABECERA -->
+      <!-- CUERPO -->
+      <form>
+        <!-- INPUT NOMBRE DEL PJ -->
+        <p></p>
+        <label for="charactername">Introduce el nombre del personaje</label>
+        <input type="text" name="charactername" required />
+        <!-- /INPUT NOMBRE DEL PJ -->
+        <p></p>
+        <!-- INPUT DESPLEGABLE DE LA RAZA -->
+        <label for="race">
+          Elige la raza de tu personaje
+        </label>
+
+        <select>
+          <option value="human">
+            Humano
+          </option>
+          <option value="elf">
+            Elfo
+          </option>
+          <option value="dwarf">
+            Enano
+          </option>
+          <option value="halfelf">
+            Semielfo
+          </option>
+        </select>
+        <!-- /INPUT DESPLEGABLE DE LA RAZA -->
+      </form>
+      <!-- CONTENEDORES CON LAS CLASES -->
+      <!-- MAGO -->
+      <span>
+        <h2>MAGO</h2>
+        <figure>
+          <img
+            src="../img/mago.jpg"
+            alt="Imágen de un mago"
+            title="Mago"
+            width="200px"
+          />
+          <figcaption style="font-size: small;">
+            Imágen de un mago.
+          </figcaption>
+        </figure>
+        <p>
+          Personajes místicos que manipulan los diferentes elementos, tanto para
+          curar como para destruir.
+        </p>
+        <a href="wizard.html">
+          <input type="button" value="Elige ser Mago" />
+        </a>
+      </span>
+      <!-- /MAGO -->
+      <!-- GUERRERO -->
+      <span>
+        <h2>GUERRERO</h2>
+        <figure>
+          <img
+            src="../img/guerrero.jpg"
+            alt="Imágen de un guerrero"
+            title="Guerrero"
+            width="200px"
+          />
+          <figcaption style="font-size: small;">
+            Imágen de un guerrero.
+          </figcaption>
+        </figure>
+        <p>
+          Poderosos luchadores que blanden armas cuerpo a cuerpo y visten
+          armaduras pesadas.
+        </p>
+        <a href="warrior.html">
+          <input type="button" value="Elige ser Guerrero" />
+        </a>
+      </span>
+      <!-- /GUERRERO -->
+      <!-- ARQUERO -->
+      <span>
+        <h2>ARQUERO</h2>
+
+        <figure>
+          <img
+            src="../img/arquero.jpg"
+            alt="Imágen de un arquero"
+            title="Arquero"
+            width="200px"
+          />
+          <figcaption style="font-size: small;">
+            Imágen de un arquero.
+          </figcaption>
+        </figure>
+        <p>
+          Luchadores habilidosos y escurridizos que atacan desde la distancia
+          con tiros certeros.
+        </p>
+
+        <a href="ranger.html">
+          <input type="button" value="Elige ser Arquero" />
+        </a>
+      </span>
+      <!-- /ARQUERO -->
+      <!-- /CONTENEDORES CON LAS CLASES -->
+      <!-- /CUERPO -->
+    </main>
     <!-- /MAIN -->
     <!-- FOOTER -->
     <footer>
