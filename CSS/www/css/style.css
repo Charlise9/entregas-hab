@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap");
+
+html {
+  --fondo: #135e09;
+  --dark: rgb(20, 20, 20);
+  --bright: white;
+  --grey: rgb(120, 120, 120);
+  --font: Roboto, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--fondo);
+  font-family: var(--font);
+}
+
+/*  Header */
+
+img {
+  max-width: 100%;
+}
+
+body > header {
+  background-image: url("../img/vaca-fondo.jpeg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100vw;
+  height: 40vh;
+}
+
+body > header h1 {
+  display: flex;
+  justify-content: center;
+  color: var(--fondo);
+}
+
+/*  footer */
+
+body > footer {
+  order: -1;
+}
