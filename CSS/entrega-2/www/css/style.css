@@ -1,0 +1,151 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  --dark: #222222;
+  --bright: white;
+  --action: #2d9cdb;
+  --font: Roboto, sans-serif;
+}
+
+img {
+  max-width: 100%;
+}
+
+body {
+  font-family: var(--font);
+  font-weight: 300;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Clases comunes */
+
+a.action {
+  background-color: var(--action);
+  color: var(--bright);
+  text-decoration: none;
+  padding: 0.25rem 2rem;
+  display: inline-block;
+  font-weight: 500;
+}
+
+/* Header */
+
+body > header {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+body > header img {
+  border-radius: 50%;
+  border: 10px solid var(--dark);
+  max-width: 8rem;
+}
+
+body > header h1 {
+  margin: 1rem 0 0.5rem 0;
+}
+
+body > header a {
+  color: var(--dark);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* Section(s) */
+
+body > section {
+  margin: 1rem;
+}
+
+body > section p,
+body > section figure {
+  margin-bottom: 1rem;
+}
+
+body > section figure img {
+  width: 100%;
+}
+
+body > section#experience h2 {
+  margin-bottom: 1rem;
+}
+
+body > section#experience ul {
+  padding-left: 2rem;
+}
+
+/* Footer */
+
+body > footer {
+  order: -1;
+  background-color: var(--dark);
+}
+
+body > footer ul {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+}
+
+body > footer ul li a {
+  color: var(--bright);
+  text-decoration: none;
+  display: block;
+  padding: 1rem;
+}
+
+@media (min-width: 700px) {
+  body {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  body > footer {
+    width: 100%;
+  }
+  body > header {
+    width: 100%;
+  }
+
+  body > header h1 {
+    font-size: 3rem;
+    margin-top: 0;
+    line-height: 4rem;
+  }
+
+  body > section {
+    width: calc(50% - 2rem);
+  }
+
+  body#interior > header {
+    width: 30%;
+  }
+
+  body#interior > section {
+    width: calc(70% - 4rem);
+  }
+}
+
+@media (min-width: 1000px) {
+  html {
+    font-size: 20px;
+  }
+
+  body > header {
+    text-align: right;
+    margin: 1rem;
+  }
+
+  body > header,
+  body > section {
+    width: calc(33.33% - 2rem);
+  }
+}
