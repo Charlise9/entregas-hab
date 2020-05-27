@@ -58,7 +58,7 @@ body > ul li {
 body > ul article {
   background-color: var(--white);
   margin: 1rem;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 15px rgba(241, 3, 3, 0.5);
 }
 
 body > ul article header {
@@ -68,6 +68,7 @@ body > ul article header {
 
 body > ul article header figure {
   margin-bottom: 1rem;
+  min-height: 250px;
 }
 
 body > ul article header figure img {
