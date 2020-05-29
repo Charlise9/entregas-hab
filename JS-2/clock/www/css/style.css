@@ -1,0 +1,81 @@
+@font-face {
+  font-family: "Clock";
+  src: url("/fonts/clock.woff2"), url("/fonts/clock.woff");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Clock, sans-serif;
+  min-height: 100vh;
+
+  background-color: black;
+  color: yellowgreen;
+  display: grid;
+  place-content: center;
+}
+
+header {
+  text-align: center;
+  padding: 1rem 2rem;
+  border: 0.25rem dotted yellowgreen;
+  border-radius: 50px;
+}
+
+header h1 {
+  font-size: 3rem;
+  font-weight: normal;
+  padding-bottom: 2rem;
+}
+
+header h2 {
+  font-weight: normal;
+}
+
+/* Media Queries */
+@media (min-width: 700px) {
+  html {
+    font-size: 25px;
+  }
+}
+
+@media (min-width: 1000px) {
+  html {
+    font-size: 35px;
+  }
+}
+
+/* Clases */
+
+img {
+  max-width: 100%;
+}
+
+.morning {
+  background-image: url("/img/morning.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.afternoon {
+  background-image: url("/img/arfernoon.jpeg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.night {
+  background-image: url("/img/night.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.alarm {
+  color: red;
+  border: 0.25rem solid red;
+}
