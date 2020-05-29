@@ -16,13 +16,18 @@ body {
   color: yellowgreen;
   display: grid;
   place-content: center;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 header {
   text-align: center;
   padding: 1rem 2rem;
-  border: 0.25rem dotted yellowgreen;
+  border: 0.25rem solid yellowgreen;
   border-radius: 50px;
+  background: rgba(0, 0, 0, 0.5);
 }
 
 header h1 {
@@ -56,23 +61,14 @@ img {
 
 .morning {
   background-image: url("/img/morning.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
 }
 
 .afternoon {
   background-image: url("/img/arfernoon.jpeg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
 }
 
 .night {
   background-image: url("/img/night.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
 }
 
 .alarm {
