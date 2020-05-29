@@ -18,7 +18,7 @@ function format(number) {
 function writeClock() {
   const now = new Date();
 
-  /* now.setHours(20);
+  /* now.setHours(10);
   now.setMinutes(28); */
 
   const hours = format(now.getHours());
@@ -39,7 +39,7 @@ function writeClock() {
   } else {
     clock.textContent = `${hours}:${minutes}:${seconds}`;
     greeting.textContent = getGreeting(now.getHours());
-    /* body.textContent = backgroundPhoto(now.getHours()); */
+    backgroundPhoto(now.getHours());
 
     const color = `rgb(${rn(255)},${rn(255)},${rn(255)})`;
     header.style.color = color;
@@ -55,11 +55,11 @@ function getGreeting(hour) {
 
 function backgroundPhoto(hour) {
   if (hour <= 6 || hour >= 22) {
-    body.classList.add("night");
+    body.setAttribute("class", "night");
   } else if (hour <= 12) {
-    body.classList.add("morning");
+    body.setAttribute("class", "morning");
   } else {
-    body.classList.add("afternoon");
+    body.setAttribute("class", "afternoon");
   }
 }
 
