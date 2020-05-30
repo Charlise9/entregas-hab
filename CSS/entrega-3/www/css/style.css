@@ -126,7 +126,7 @@ body > ul article header nav ul li a.linkedin {
 
   body > ul {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: auto auto;
     grid-template-rows: repeat (2, auto);
     gap: 1rem;
 
@@ -158,8 +158,8 @@ body > ul article header nav ul li a.linkedin {
 @media (min-width: 1000px) {
   body > ul {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 1fr;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: auto;
 
     grid-template-areas: "tomas rosa johnny";
   }
