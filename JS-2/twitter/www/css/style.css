@@ -1,0 +1,54 @@
+/* * {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+button {
+  background-color: rgb(150, 150, 150);
+  color: black;
+  padding: 0.5rem, 3rem;
+  border-style: none;
+}
+
+body {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(2, auto);
+  gap: 1rem;
+
+  justify-items: stretch;
+  align-items: stretch;
+
+  grid-template-areas:
+    "titulo  nada nada"
+    "mensaje  mensaje enviar";
+}
+
+body > header {
+  grid-area: titulo;
+}
+
+body > form {
+  grid-area: mensaje;
+}
+
+body > button {
+  grid-area: enviar;
+}
+
+body > form textarea {
+}
+
+body > ul {
+  list-style: none;
+  justify-content: center;
+}
+
+body > ul li {
+  border-top: 0.25rem solid rgba(0, 0, 0, 0.5);
+}
+ */
