@@ -16,10 +16,6 @@ body {
   padding: 0.25rem 1 rem;
 }
 
-.horizontal-gradient {
-  background: linear-gradient(to right, var(--blue), var(--bright));
-}
-
 .action:hover {
   transform: scale(1.25);
 }
@@ -27,6 +23,7 @@ body {
 header {
   padding: 0 1rem;
   color: var(--bright);
+  background: linear-gradient(to right, var(--blue), var(--bright));
 }
 
 form {
