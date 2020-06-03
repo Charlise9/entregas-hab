@@ -1,0 +1,57 @@
+html {
+  --blue: rgb(35, 154, 228);
+  --bright: rgb(255, 255, 255);
+}
+
+body {
+  font-family: sans-serif;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.action {
+  border: 0;
+  border-radius: 10px;
+  background-color: var(--blue);
+  padding: 0.25rem 1 rem;
+}
+
+.horizontal-gradient {
+  background: linear-gradient(to right, var(--blue), var(--bright));
+}
+
+.action:hover {
+  transform: scale(1.25);
+}
+
+header {
+  padding: 0 1rem;
+  color: var(--bright);
+}
+
+form {
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+form input {
+  flex-grow: 1;
+  padding: 0.5rem;
+  margin-right: 1rem;
+  border: 1px solid var(--blue);
+  border-radius: 10px;
+}
+
+ul#tweets {
+  list-style: none;
+  padding: 0;
+}
+
+ul#tweets li footer {
+  display: flex;
+}
+
+ul#tweets li footer time {
+  flex-grow: 1;
+  font-weight: bold;
+}
