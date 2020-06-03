@@ -1,54 +1,50 @@
-/* * {
-  margin: 0;
-  padding: 0;
+html {
+  --blue: rgb(35, 154, 228);
+  --bright: rgb(255, 255, 255);
 }
 
 body {
   font-family: sans-serif;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-button {
-  background-color: rgb(150, 150, 150);
-  color: black;
-  padding: 0.5rem, 3rem;
-  border-style: none;
+.action {
+  border: 0;
+  background-color: var(--blue);
+  padding: 0.25rem 1 rem;
 }
 
-body {
-  display: grid;
-  grid-template-columns: repeat(3, auto);
-  grid-template-rows: repeat(2, auto);
-  gap: 1rem;
-
-  justify-items: stretch;
-  align-items: stretch;
-
-  grid-template-areas:
-    "titulo  nada nada"
-    "mensaje  mensaje enviar";
+.horizontal-gradient {
+  background: linear-gradient(to right, var(--blue), var(--bright));
 }
 
-body > header {
-  grid-area: titulo;
+header {
+  padding: 0 1rem;
 }
 
-body > form {
-  grid-area: mensaje;
+form {
+  display: flex;
+  margin-bottom: 2rem;
 }
 
-body > button {
-  grid-area: enviar;
+form input {
+  flex-grow: 1;
+  padding: 0.5rem;
+  margin-right: 1rem;
+  border: 1px solid var(--blue);
 }
 
-body > form textarea {
-}
-
-body > ul {
+ul#tweets {
   list-style: none;
-  justify-content: center;
+  padding: 0;
 }
 
-body > ul li {
-  border-top: 0.25rem solid rgba(0, 0, 0, 0.5);
+ul#tweets li footer {
+  display: flex;
 }
- */
+
+ul#tweets li footer time {
+  flex-grow: 1;
+  font-weight: bold;
+}
