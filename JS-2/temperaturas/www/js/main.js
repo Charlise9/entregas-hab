@@ -8,8 +8,8 @@ const temperatures = [
   },
   {
     city: "Ferrol",
-    min: 15,
-    max: 32,
+    min: 9,
+    max: 22,
   },
   {
     city: "Lugo",

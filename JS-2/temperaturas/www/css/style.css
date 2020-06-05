@@ -1,7 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
+
 html {
   background-image: url("/../img/fondohtml.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  --font: "Indie Flower", sans-serif;
 }
 
 body {
@@ -21,7 +24,7 @@ section#temp {
 }
 
 table {
-  font-family: sans-serif;
+  font-family: var(--font);
   background: rgb(0, 0, 0, 0.5);
   padding: 1rem;
   color: white;
