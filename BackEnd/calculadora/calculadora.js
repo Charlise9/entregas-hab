@@ -50,7 +50,7 @@ if (!valid_operations.includes(operation)) {
 const vA = Number(valueA);
 const vB = Number(valueB);
 
-if (!vA || !vB) {
+if (isNaN(vA) || isNaN(vB)) {
   console.log("Los valores no son numéricos");
   process.exit();
 }
