@@ -74,6 +74,10 @@ switch (operation) {
     break;
 }
 
+if (language === "es" && result === "Infinity") {
+  return "infinito";
+}
+
 if (language === "es") {
   console.log(
     `El resultado de ${operation_translations[operation][language]} ${vA} y ${vB} es ${result}`
