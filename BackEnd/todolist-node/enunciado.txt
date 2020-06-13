@@ -1,8 +1,8 @@
 Ejercicio semanal:
 
-node todo.js Comprar pan //Añadiria "comprar pan" al principio de la lista de tareas
-node todo.js Ir al dentista --priority //Añadiria con prioridad alta
-node todo.js --list //Listaría todas las tareas
+node todo.js Comprar pan //Añadiria "comprar pan" al principio de la lista de tareas (hecho)
+node todo.js Ir al dentista --priority //Añadiria con prioridad alta (hecho)
+node todo.js --list //Listaría todas las tareas (semi hecho)
 node todo.js --done=1 //Marcaría la tarea 1 como hecha
 node todo.js --undone=1 //Desmarcaría la tarea 1 como hecha
 node todo.js --clean //Borraria las tareas ya hechas

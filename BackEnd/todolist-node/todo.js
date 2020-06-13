@@ -27,12 +27,14 @@ async function todoList() {
 
   if (done) {
     // Marcar el todo número "done" como hecho
+    await markAsDone(done);
     console.log(`Marco el todo ${done} como HECHO`);
     process.exit();
   }
 
   if (undone) {
     // Marcar el todo número "undone" como no hecho
+    await markAsUndone(undone);
     console.log(`Marco el todo ${undone} como PENDIENTE`);
     process.exit();
   }
@@ -49,7 +51,7 @@ async function todoList() {
     // Añadir newTodo a la lista
     await addTodo({
       text: newTodo,
-      priority: priority ? true : false,
+      priority: !!priority /* ? true : false */, // esto sería como poner priority: !!priority;
     });
 
     process.exit();

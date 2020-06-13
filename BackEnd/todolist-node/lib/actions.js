@@ -1,6 +1,8 @@
 const fs = require("fs").promises;
 const path = require("path");
 const os = require("os");
+const { formatDistanceToNow } = require("date-fns");
+const { es } = require("date-fns/locale");
 
 const todoFile = path.join(os.homedir(), ".tasks.json");
 
@@ -27,7 +29,7 @@ async function readTodoList() {
 // Guarda la lista de todos
 async function saveTodos(todoList) {
   try {
-    await fs.writeFile(todoFile, JSON.stringify(todoList));
+    await fs.writeFile(todoFile, JSON.stringify({ todos: todoList }));
   } catch (error) {
     console.error(error.message);
   }
@@ -36,38 +38,68 @@ async function saveTodos(todoList) {
 async function addTodo({ text, priority }) {
   console.log(text, priority);
   // Abrir la lista actual de todos
-  const currentList = await readTodoList();
+  const { todos } = await readTodoList();
 
-  currentList.todos.unshift({
+  // Añadir el todo que recibe al principio
+  todos.unshift({
     text,
+    status: false,
     priority,
+    date: Date.now(),
   });
 
-  await saveTodos(currentList);
-  // Añadir el todo que recibe al principio
+  await saveTodos(todos);
   // Guardar la lista actualizada
 }
 
 async function markAsDone(index) {
   // Abrir la lista actual de todos
+  const { todos } = await readTodoList();
   // Buscar el todo con el index que recibe
+  const task = todos[index];
   // Modificar el objeto del todo como done: true
+  task.status = true;
   // Guardar la lista actualizada
+  await saveTodos(todos);
 }
 
 async function markAsUndone(index) {
   // Abrir la lista actual de todos
+  const { todos } = await readTodoList();
+  console.log(todos);
   // Buscar el todo con el index que recibe
+  const task = todos[index];
   // Modificar el objeto del todo como done: false
+  task.status = false;
   // Guardar la lista actualizada
+  await saveTodos(todos);
 }
 
 async function listTodos() {
   // Abrir la lista actual de todos
   // Imprimir la lista en la consola
-  const todos = await readTodoList();
+  const { todos } = await readTodoList();
 
-  console.log(todos);
+  // Poner date-fns a la fecha.
+  // hacerlo en un bucle
+
+  // Ordenar los todos por priority
+  const priorityTasks = [];
+  const nonPriorityTasks = [];
+
+  for (const task of todos) {
+    task.date = `Tarea añadida hace ${formatDistanceToNow(task.date, {
+      locale: es,
+    })}`;
+
+    if (task.priority === true) {
+      priorityTasks.push(task);
+    } else {
+      nonPriorityTasks.push(task);
+    }
+  }
+
+  console.log(priorityTasks.concat(nonPriorityTasks));
 }
 
 async function cleanTodos() {
