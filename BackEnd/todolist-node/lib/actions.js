@@ -144,24 +144,24 @@ async function listTodos() {
 }
 
 async function cleanTodos() {
+  // Abrir la lista actual de todos
+  const { todos } = await readTodoList();
+
+  // Filtrar los que siguen sin estar hechos y guardarlos
+  const noDone = todos.filter((task) => {
+    return task.done !== true;
+  });
+
+  if (noDone.length === todos.length) {
+    console.log("No hay tareas que borrar, aún tienes todo pendiente VAGO!!!!");
+    return;
+  }
   try {
-    // Abrir la lista actual de todos
-    const { todos } = await readTodoList();
-
-    // Filtrar los que siguen sin estar hechos y guardarlos
-    const noDone = todos.filter((task) => {
-      return task.done !== true;
-    });
-
-    console.log(
-      "Las tareas hechas han sido borradas, quedan sólo las pendientes"
-    );
-
     await saveTodos(noDone);
   } catch (error) {
-    console.error(
-      "No hay tareas que borrar, sigues con todo pendiente VAGO!!!!"
-    );
+    console.error(error);
+  } finally {
+    console.log("Las tareas han sido borradas");
   }
 }
 
