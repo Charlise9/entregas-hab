@@ -37,7 +37,11 @@ async function saveTodos(todoList) {
 }
 
 async function addTodo({ text, priority }) {
-  console.log(`Has añadido ${text} a la lista, con prioridad: ${priority}`);
+  console.log(
+    `Has añadido ${chalk.blue(
+      `${text}`
+    )} a la lista, con prioridad: ${chalk.blue(`${priority}`)}`
+  );
   // Abrir la lista actual de todos
   const { todos } = await readTodoList();
 
@@ -58,9 +62,14 @@ async function markAsDone(index) {
     // Abrir la lista actual de todos
     const { todos } = await readTodoList();
     // Buscar el todo con el index que recibe
-    const task = todos[index];
+    const task = todos[index - 1];
     // Modificar el objeto del todo como done: true
     task.done = true;
+    console.log(
+      `Acabas de marcar ${chalk.blue(`${task.text}`)}  como ${chalk.green(
+        "HECHO"
+      )}`
+    );
     // Guardar la lista actualizada
     await saveTodos(todos);
   } catch (error) {
@@ -73,9 +82,14 @@ async function markAsUndone(index) {
     // Abrir la lista actual de todos
     const { todos } = await readTodoList();
     // Buscar el todo con el index que recibe
-    const task = todos[index];
+    const task = todos[index - 1];
     // Modificar el objeto del todo como done: false
     task.done = false;
+    console.log(
+      `Acabas de marcar ${chalk.blue(`${task.text}`)}  como ${chalk.red(
+        "PENDIENTE"
+      )}`
+    );
     // Guardar la lista actualizada
     await saveTodos(todos);
   } catch (error) {
@@ -111,7 +125,33 @@ async function listTodos() {
     }
   }
 
-  console.log(priorityTasks.concat(nonPriorityTasks));
+  /* console.log(
+    chalk.red(JSON.stringify(priorityTasks)) + JSON.stringify(nonPriorityTasks)
+  ); */
+
+  for (const task of priorityTasks) {
+    console.log(chalk.red(task.text));
+    console.log(chalk.red(task.date));
+    if (task.done === true) {
+      console.log(chalk.green("HECHO"));
+      console.log(" ");
+    } else {
+      console.log(chalk.yellow("PENDIENTE"));
+      console.log(" ");
+    }
+  }
+
+  for (const task of nonPriorityTasks) {
+    console.log(chalk.blue(task.text));
+    console.log(chalk.blue(task.date));
+    if (task.done === true) {
+      console.log(chalk.green("HECHO"));
+      console.log(" ");
+    } else {
+      console.log(chalk.yellow("PENDIENTE"));
+      console.log(" ");
+    }
+  }
 }
 
 async function cleanTodos() {

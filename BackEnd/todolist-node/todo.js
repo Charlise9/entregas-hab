@@ -25,21 +25,21 @@ async function todoList() {
   if (done) {
     // Marcar el todo número "done" como hecho
     await markAsDone(done);
-    /* console.log(`Marco el todo ${done} como HECHO`); */
+
     process.exit();
   }
 
   if (undone) {
     // Marcar el todo número "undone" como no hecho
     await markAsUndone(undone);
-    console.log(`Marco el todo ${undone} como PENDIENTE`);
+
     process.exit();
   }
 
   if (clean) {
     // Borro de la lista todos hechos
     await cleanTodos();
-    console.log(`Borro los todos ya hechos`);
+
     process.exit();
   }
 
