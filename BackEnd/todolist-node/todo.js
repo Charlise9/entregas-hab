@@ -1,9 +1,6 @@
-const fs = require("fs").promises;
-const path = require("path");
+"use strict";
+
 const minimist = require("minimist");
-const { formatDistanceToNow } = require("date-fns");
-const { es } = require("date-fns/locale");
-const os = require("os");
 const chalk = require("chalk");
 const {
   addTodo,
@@ -28,7 +25,7 @@ async function todoList() {
   if (done) {
     // Marcar el todo número "done" como hecho
     await markAsDone(done);
-    console.log(`Marco el todo ${done} como HECHO`);
+    /* console.log(`Marco el todo ${done} como HECHO`); */
     process.exit();
   }
 
@@ -41,6 +38,7 @@ async function todoList() {
 
   if (clean) {
     // Borro de la lista todos hechos
+    await cleanTodos();
     console.log(`Borro los todos ya hechos`);
     process.exit();
   }

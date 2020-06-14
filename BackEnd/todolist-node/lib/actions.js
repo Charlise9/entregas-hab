@@ -3,6 +3,7 @@ const path = require("path");
 const os = require("os");
 const { formatDistanceToNow } = require("date-fns");
 const { es } = require("date-fns/locale");
+const chalk = require("chalk");
 
 const todoFile = path.join(os.homedir(), ".tasks.json");
 
@@ -36,14 +37,14 @@ async function saveTodos(todoList) {
 }
 
 async function addTodo({ text, priority }) {
-  console.log(text, priority);
+  console.log(`Has añadido ${text} a la lista, con prioridad: ${priority}`);
   // Abrir la lista actual de todos
   const { todos } = await readTodoList();
 
   // Añadir el todo que recibe al principio
   todos.unshift({
     text,
-    status: false,
+    done: false,
     priority,
     date: Date.now(),
   });
@@ -53,26 +54,33 @@ async function addTodo({ text, priority }) {
 }
 
 async function markAsDone(index) {
-  // Abrir la lista actual de todos
-  const { todos } = await readTodoList();
-  // Buscar el todo con el index que recibe
-  const task = todos[index];
-  // Modificar el objeto del todo como done: true
-  task.status = true;
-  // Guardar la lista actualizada
-  await saveTodos(todos);
+  try {
+    // Abrir la lista actual de todos
+    const { todos } = await readTodoList();
+    // Buscar el todo con el index que recibe
+    const task = todos[index];
+    // Modificar el objeto del todo como done: true
+    task.done = true;
+    // Guardar la lista actualizada
+    await saveTodos(todos);
+  } catch (error) {
+    console.error("Has seleccionado una tarea que no existe");
+  }
 }
 
 async function markAsUndone(index) {
-  // Abrir la lista actual de todos
-  const { todos } = await readTodoList();
-  console.log(todos);
-  // Buscar el todo con el index que recibe
-  const task = todos[index];
-  // Modificar el objeto del todo como done: false
-  task.status = false;
-  // Guardar la lista actualizada
-  await saveTodos(todos);
+  try {
+    // Abrir la lista actual de todos
+    const { todos } = await readTodoList();
+    // Buscar el todo con el index que recibe
+    const task = todos[index];
+    // Modificar el objeto del todo como done: false
+    task.done = false;
+    // Guardar la lista actualizada
+    await saveTodos(todos);
+  } catch (error) {
+    console.error("Has seleccionado una tarea que no existe");
+  }
 }
 
 async function listTodos() {
@@ -80,14 +88,18 @@ async function listTodos() {
   // Imprimir la lista en la consola
   const { todos } = await readTodoList();
 
-  // Poner date-fns a la fecha.
-  // hacerlo en un bucle
-
   // Ordenar los todos por priority
   const priorityTasks = [];
   const nonPriorityTasks = [];
 
+  // hacerlo en un bucle
   for (const task of todos) {
+    // Poner chalk
+    /* if (task.priority === true) {
+      task.text = chalk.red(`${task.text}`);
+    } */
+
+    // Poner date-fns a la fecha.
     task.date = `Tarea añadida hace ${formatDistanceToNow(task.date, {
       locale: es,
     })}`;
@@ -103,7 +115,25 @@ async function listTodos() {
 }
 
 async function cleanTodos() {
-  // Abrir la lista actual de todos
+  try {
+    // Abrir la lista actual de todos
+    const { todos } = await readTodoList();
+
+    // Filtrar los que siguen sin estar hechos y guardarlos
+    const noDone = todos.filter((task) => {
+      return task.done !== true;
+    });
+
+    console.log(
+      "Las tareas hechas han sido borradas, quedan sólo las pendientes"
+    );
+
+    await saveTodos(noDone);
+  } catch (error) {
+    console.error(
+      "No hay tareas que borrar, sigues con todo pendiente VAGO!!!!"
+    );
+  }
 }
 
 module.exports = {
