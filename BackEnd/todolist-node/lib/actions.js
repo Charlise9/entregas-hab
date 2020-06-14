@@ -58,89 +58,108 @@ async function addTodo({ text, priority }) {
 }
 
 async function markAsDone(index) {
+  // Abrir la lista actual de todos
+  const { todos } = await readTodoList();
+
+  // Comprobar que el index puesto existe
+  if (index >= todos.length) {
+    console.error("Has seleccionado una tarea que no existe");
+    return;
+  }
+
+  // Buscar el todo con el index que recibe
+  const task = todos[index - 1];
+  // Modificar el objeto del todo como done: true
+  task.done = true;
+  console.log(
+    `Acabas de marcar ${chalk.blue(`${task.text}`)}  como ${chalk.green(
+      "HECHO"
+    )}`
+  );
+
   try {
-    // Abrir la lista actual de todos
-    const { todos } = await readTodoList();
-    // Buscar el todo con el index que recibe
-    const task = todos[index - 1];
-    // Modificar el objeto del todo como done: true
-    task.done = true;
-    console.log(
-      `Acabas de marcar ${chalk.blue(`${task.text}`)}  como ${chalk.green(
-        "HECHO"
-      )}`
-    );
     // Guardar la lista actualizada
     await saveTodos(todos);
   } catch (error) {
-    console.error("Has seleccionado una tarea que no existe");
+    throw new Error(error);
   }
 }
 
 async function markAsUndone(index) {
+  // Abrir la lista actual de todos
+  const { todos } = await readTodoList();
+
+  // Comprobar que el index puesto existe
+  if (index >= todos.length) {
+    console.error("Has seleccionado una tarea que no existe");
+    return;
+  }
+
+  // Buscar el todo con el index que recibe
+  const task = todos[index - 1];
+  // Modificar el objeto del todo como done: false
+  task.done = false;
+  console.log(
+    `Acabas de marcar ${chalk.blue(`${task.text}`)}  como ${chalk.red(
+      "PENDIENTE"
+    )}`
+  );
+
   try {
-    // Abrir la lista actual de todos
-    const { todos } = await readTodoList();
-    // Buscar el todo con el index que recibe
-    const task = todos[index - 1];
-    // Modificar el objeto del todo como done: false
-    task.done = false;
-    console.log(
-      `Acabas de marcar ${chalk.blue(`${task.text}`)}  como ${chalk.red(
-        "PENDIENTE"
-      )}`
-    );
     // Guardar la lista actualizada
     await saveTodos(todos);
   } catch (error) {
-    console.error("Has seleccionado una tarea que no existe");
+    throw new Error(error);
+  }
+}
+
+// Función para ordenar por prioridad y poner chalk
+function printTasks(tasks, arePriority) {
+  const color = arePriority ? "red" : "blue";
+  for (const task of tasks) {
+    console.log(chalk[color].bold(task.text));
+    console.log(chalk[color](task.date));
+    console.log(task.done ? chalk.green("HECHO") : chalk.yellow("PENDIENTE"));
+    console.log("");
   }
 }
 
 async function listTodos() {
-  // Abrir la lista actual de todos
-  // Imprimir la lista en la consola
-  const { todos } = await readTodoList();
+  try {
+    // Abrir la lista actual de todos
+    const { todos } = await readTodoList();
 
-  // Ordenar los todos por priority
-  const priorityTasks = [];
-  const nonPriorityTasks = [];
-
-  // hacerlo en un bucle
-  for (const task of todos) {
-    // Poner chalk
-    /* if (task.priority === true) {
-      task.text = chalk.red(`${task.text}`);
-    } */
-
-    // Poner date-fns a la fecha.
-    task.date = `Tarea añadida hace ${formatDistanceToNow(task.date, {
-      locale: es,
-    })}`;
-
-    if (task.priority === true) {
-      priorityTasks.push(task);
+    if (todos.length === 0) {
+      console.log("La lista está vacía, añade una tarea por favor");
     } else {
-      nonPriorityTasks.push(task);
-    }
-  }
+      // Ordenar los todos por priority
+      const priorityTasks = [];
+      const nonPriorityTasks = [];
 
-  console.log("LISTA DE TAREAS");
-  console.log(`En ${chalk.red.bold("rojo")} las de prioridad alta`);
-  console.log("");
+      // hacer un bucle para poner la fecha y separar por prioridad
+      for (const task of todos) {
+        // Fecha
+        task.date = `Tarea añadida hace ${formatDistanceToNow(task.date, {
+          locale: es,
+        })}`;
 
-  function printTasks(tasks, arePriority) {
-    const color = arePriority ? "red" : "blue";
-    for (const task of tasks) {
-      console.log(chalk[color].bold(task.text));
-      console.log(chalk[color](task.date));
-      console.log(task.done ? chalk.green("HECHO") : chalk.yellow("PENDIENTE"));
+        // Separar por prioridad
+        if (task.priority === true) {
+          priorityTasks.push(task);
+        } else {
+          nonPriorityTasks.push(task);
+        }
+      }
+      console.log("LISTA DE TAREAS");
+      console.log(`En ${chalk.red.bold("rojo")} las de prioridad alta`);
       console.log("");
-    }
-  }
 
-  printTasks(priorityTasks, true);
-  printTasks(nonPriorityTasks, false);
+      printTasks(priorityTasks, true);
+      printTasks(nonPriorityTasks, false);
+    }
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 async function cleanTodos() {
@@ -159,7 +178,7 @@ async function cleanTodos() {
   try {
     await saveTodos(noDone);
   } catch (error) {
-    console.error(error);
+    throw new Error(error);
   } finally {
     console.log("Las tareas han sido borradas");
   }
