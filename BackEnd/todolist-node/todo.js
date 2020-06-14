@@ -18,7 +18,7 @@ async function todoList() {
   if (list) {
     // Listar todoList
     await listTodos();
-    console.log("listo todos los todos");
+
     process.exit();
   }
 

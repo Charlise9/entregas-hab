@@ -125,33 +125,22 @@ async function listTodos() {
     }
   }
 
-  /* console.log(
-    chalk.red(JSON.stringify(priorityTasks)) + JSON.stringify(nonPriorityTasks)
-  ); */
+  console.log("LISTA DE TAREAS");
+  console.log(`En ${chalk.red.bold("rojo")} las de prioridad alta`);
+  console.log("");
 
-  for (const task of priorityTasks) {
-    console.log(chalk.red(task.text));
-    console.log(chalk.red(task.date));
-    if (task.done === true) {
-      console.log(chalk.green("HECHO"));
-      console.log(" ");
-    } else {
-      console.log(chalk.yellow("PENDIENTE"));
-      console.log(" ");
+  function printTasks(tasks, arePriority) {
+    const color = arePriority ? "red" : "blue";
+    for (const task of tasks) {
+      console.log(chalk[color].bold(task.text));
+      console.log(chalk[color](task.date));
+      console.log(task.done ? chalk.green("HECHO") : chalk.yellow("PENDIENTE"));
+      console.log("");
     }
   }
 
-  for (const task of nonPriorityTasks) {
-    console.log(chalk.blue(task.text));
-    console.log(chalk.blue(task.date));
-    if (task.done === true) {
-      console.log(chalk.green("HECHO"));
-      console.log(" ");
-    } else {
-      console.log(chalk.yellow("PENDIENTE"));
-      console.log(" ");
-    }
-  }
+  printTasks(priorityTasks, true);
+  printTasks(nonPriorityTasks, false);
 }
 
 async function cleanTodos() {
