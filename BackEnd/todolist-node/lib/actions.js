@@ -62,7 +62,7 @@ async function markAsDone(index) {
   const { todos } = await readTodoList();
 
   // Comprobar que el index puesto existe
-  if (index >= todos.length) {
+  if (index > todos.length) {
     console.error("Has seleccionado una tarea que no existe");
     return;
   }
@@ -90,7 +90,7 @@ async function markAsUndone(index) {
   const { todos } = await readTodoList();
 
   // Comprobar que el index puesto existe
-  if (index >= todos.length) {
+  if (index > todos.length) {
     console.error("Has seleccionado una tarea que no existe");
     return;
   }
