@@ -1,14 +1,20 @@
 <template>
   <div>
-    <ul v-for="artist in artists" :key="artist.id">
-      <li>
-        <p class="artist">{{ artist.name }}</p>
-        <img :src="artist.image[2]['#text']" />
-        <a :href="artist.url">{{artist.url}}</a>
+    <h1>Top Artists</h1>
+    <input id="buscador" type="search" v-model="search" placeholder="Búsqueda de artista" />
 
-        <p>OYENTES: {{ artist.listeners }}</p>
-      </li>
-    </ul>
+    <section>
+      <ul v-for="artist in filtered" :key="artist.id">
+        <li>
+          <p class="principal">{{ artist.name }}</p>
+          <img :src="artist.image[2]['#text']" />
+          <p>OYENTES: {{ artist.listeners }}</p>
+          <button>
+            <a :href="artist.url" target="_blank">Info de {{artist.name}}</a>
+          </button>
+        </li>
+      </ul>
+    </section>
   </div>
 </template>
 
@@ -17,20 +23,23 @@ export default {
   name: "ArtistsCard",
   props: {
     artists: Array
+  },
+  data() {
+    return {
+      search: ""
+    };
+  },
+  computed: {
+    filtered() {
+      if (!this.search) {
+        return this.artists;
+      }
+      return this.artists.filter(artist =>
+        artist.name.toLowerCase().includes(this.search.toLowerCase())
+      );
+    }
   }
 };
 </script>
 
-<style scoped>
-ul {
-  list-style: none;
-}
 
-li {
-  margin-bottom: 2rem;
-}
-
-.artist {
-  font-weight: bold;
-}
-</style>

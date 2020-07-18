@@ -1,7 +1,6 @@
 <template>
   <div class="toptracks">
     <vue-headful title="Hack A Music | Top Tracks" />
-    <h1>Top Tracks</h1>
 
     <trackscard :toptracks="toptracks" />
   </div>
@@ -29,3 +28,10 @@ export default {
 };
 </script>
 
+
+
+<style scoped>
+.toptracks {
+  padding-top: 3.5rem;
+}
+</style>

@@ -23,29 +23,96 @@ export default {
 </script>
 
 <style>
+* {
+  margin: 0;
+  padding: 0;
+}
+
+input:focus {
+  outline: none;
+}
+
+button:focus {
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  color: yellowgreen;
+}
+section {
+  display: flex;
+  flex-direction: column;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  max-width: 400px;
+  margin: 1.5rem auto;
+}
+
+li p.principal {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: yellowgreen;
+}
+
+li button {
+  border: none;
+  background-color: yellowgreen;
+  padding: 0.25rem;
+  border-radius: 50px;
+  font-weight: bold;
+}
+
+li button a {
+  color: black;
+}
+
+#buscador {
+  margin: 1rem;
+  padding: 0.15rem;
+  border: 0.1rem solid yellowgreen;
+  border-radius: 50px;
+  width: 75%;
+  text-align: center;
+  color: yellowgreen;
+  background-color: rgb(50, 50, 50);
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: black;
+  background-color: rgb(100, 100, 100);
 }
 
-#nav {
-  padding: 30px;
+@media (min-width: 700px) {
+  section {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  section ul {
+    width: calc(50% - 4rem);
+  }
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+@media (min-width: 1000px) {
+  #app {
+    font-size: 20px;
+  }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+  h1 {
+    font-size: 50px;
+  }
 }
-
-/* ul {
-  background-color: rebeccapurple;
-  color: goldenrod;
-} */
 </style>

@@ -27,4 +27,12 @@
 </div>
 </template>
 
+<style scoped>
+.about {
+  padding-top: 3.5rem;
+}
 
+img {
+  max-width: 75%;
+}
+</style>

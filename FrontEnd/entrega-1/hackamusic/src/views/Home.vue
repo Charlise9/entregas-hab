@@ -1,7 +1,6 @@
 <template>
   <div class="home">
     <vue-headful title="Hack A Music | Home" />
-    <h1>Top Tags</h1>
 
     <tagscard :toptags="toptags" />
   </div>
@@ -26,3 +25,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.home {
+  padding-top: 3.5rem;
+}
+</style>
