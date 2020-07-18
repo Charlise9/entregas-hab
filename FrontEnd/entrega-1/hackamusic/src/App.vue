@@ -2,7 +2,7 @@
   <div id="app">
     <!-- Paso 3: declarar el componente -->
     <menucustom />
-    <router-view />
+    <router-view id="vista" />
     <footercustom />
   </div>
 </template>
@@ -23,6 +23,8 @@ export default {
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -43,9 +45,26 @@ a {
 h1 {
   color: yellowgreen;
 }
+
+img {
+  box-shadow: 0 0 15px rgba(2, 250, 23, 1);
+}
+
+#vista {
+  background-image: url("https://i.pinimg.com/originals/6f/08/ce/6f08ce865655b45e1343124cda6c653c.gif");
+  background-repeat: repeat-y;
+  background-size: contain;
+  min-height: 100vh;
+}
+
 section {
   display: flex;
   flex-direction: column;
+  width: 900px;
+  position: relative;
+  margin: 0 auto;
+  background-color: rgb(25, 25, 25);
+  color: yellowgreen;
 }
 
 ul {
@@ -56,10 +75,14 @@ ul {
   margin: 1.5rem auto;
 }
 
+li p {
+  padding: 0.25rem;
+}
+
 li p.principal {
   font-weight: bold;
-  font-size: 1.2rem;
-  color: yellowgreen;
+  font-size: 1.25rem;
+  padding: 1.5rem;
 }
 
 li button {
@@ -86,12 +109,11 @@ li button a {
 }
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Indie Flower", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: black;
-  background-color: rgb(100, 100, 100);
 }
 
 @media (min-width: 700px) {
@@ -113,6 +135,10 @@ li button a {
 
   h1 {
     font-size: 50px;
+  }
+
+  section ul {
+    width: calc(33% - 4rem);
   }
 }
 </style>

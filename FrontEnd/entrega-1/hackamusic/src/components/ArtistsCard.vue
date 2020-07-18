@@ -6,8 +6,8 @@
     <section>
       <ul v-for="artist in filtered" :key="artist.id">
         <li>
-          <p class="principal">{{ artist.name }}</p>
           <img :src="artist.image[2]['#text']" />
+          <p class="principal">{{ artist.name }}</p>
           <p>OYENTES: {{ artist.listeners }}</p>
           <button>
             <a :href="artist.url" target="_blank">Info de {{artist.name}}</a>
