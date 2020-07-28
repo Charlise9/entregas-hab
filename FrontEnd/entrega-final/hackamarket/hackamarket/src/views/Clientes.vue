@@ -2,7 +2,7 @@
   <div class="clientes">
     <vue-headful title="Hack A Market  | Clientes" />
     <h1>Clientes Hack A Market</h1>
-    <clientescard v-on:datos="mostrarInfoCliente" :clientes="clientes" />
+    <clientescard v-on:datos="mostrarInfoCliente" v-on:borrar="borrarCliente" :clientes="clientes" />
 
     <!-- MODAL PARA ACTUALIZAR CLIENTE -->
     <div v-show="seeModal" class="modal">
@@ -99,6 +99,18 @@ export default {
           email: self.emailActualizado,
           foto: self.fotoActualizada,
         })
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.error;
+        });
+    },
+    // FUNCIÓN PARA BORRAR AL CLIENTE
+    borrarCliente(indiceCliente) {
+      let self = this;
+      axios
+        .delete("http://localhost:3090/clientes/delete/" + indiceCliente)
         .then(function (response) {
           console.log(response);
         })

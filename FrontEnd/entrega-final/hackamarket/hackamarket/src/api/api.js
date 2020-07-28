@@ -106,3 +106,17 @@ app.put('/clientes/update/:id', (req, res) => {
 })
 
 // BORRAR CLIENTE
+app.delete('/clientes/delete/:id', (req, res) => {
+
+    // DATOS QUE LLEGAN DE LA VISTA
+    const id = req.params.id;
+
+    // SECUENCIA SQL
+    const sql = `DELETE FROM listaclientes WHERE id=${id}`;
+
+    // CONEXIÓN A LA BASE DE DATOS
+    connection.query(sql, error => {
+        if (error) throw error;
+        console.log('Cliente borrado con éxito 😖')
+    })
+})
