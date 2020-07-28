@@ -145,4 +145,8 @@ export default {
   border: 2px solid #e84a5f;
   border-radius: 12px;
 }
+
+.clientes {
+  padding-top: 5rem;
+}
 </style>

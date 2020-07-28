@@ -97,4 +97,7 @@ export default {
 </script>
 
 <style scoped>
+.registro {
+  padding-top: 10rem;
+}
 </style>

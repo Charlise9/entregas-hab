@@ -90,4 +90,7 @@ export default {
 </script>
 
 <style scoped>
+.addproductos {
+  padding-top: 10rem;
+}
 </style>
