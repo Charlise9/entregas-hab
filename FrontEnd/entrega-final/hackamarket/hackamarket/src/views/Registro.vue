@@ -31,7 +31,6 @@ export default {
       email: "",
       foto: "",
       createClient: false,
-      errorMsrg: false,
     };
   },
   methods: {
@@ -90,7 +89,7 @@ export default {
         this.email = "";
         this.foto = "";
       } else {
-        console.log("Yo no debería estar aquí.");
+        console.log("Wrong way amigo.");
       }
     },
   },

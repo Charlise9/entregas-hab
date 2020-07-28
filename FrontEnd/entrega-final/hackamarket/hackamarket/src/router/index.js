@@ -16,19 +16,24 @@ const routes = [
     component: () => import('../views/About.vue')
   },
   {
-    path: '/clientes',
+    path: '/clients',
     name: 'Clientes',
     component: () => import('../views/Clientes.vue')
   },
   {
-    path: '/productos',
+    path: '/register',
+    name: 'Registro',
+    component: () => import('../views/Registro.vue')
+  },
+  {
+    path: '/products',
     name: 'Productos',
     component: () => import('../views/Productos.vue')
   },
   {
-    path: '/registro',
-    name: 'Registro',
-    component: () => import('../views/Registro.vue')
+    path: '/add-products',
+    name: 'AddProductos',
+    component: () => import('../views/AddProductos.vue')
   },
   {
     path: '*',

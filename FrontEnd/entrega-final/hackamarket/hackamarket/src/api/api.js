@@ -31,14 +31,6 @@ const PORT = 3090;
 // CONEXIÓN DEL SERVICIO
 app.listen(PORT, () => console.log('API chachi 😜'));
 
-// LISTAR LOS PRODUCTOS
-
-// AÑADIR PRODUCTOS (OPCIONAL)
-
-// EDITAR PRODUCTOS (OPCIONAL)
-
-// BORRAR PRODUCTOS (OPCIONAL)
-
 // LISTADO DE CLIENTES
 app.get('/clientes', (req, res) => {
 
@@ -120,3 +112,47 @@ app.delete('/clientes/delete/:id', (req, res) => {
         console.log('Cliente borrado con éxito 😖')
     })
 })
+
+// LISTAR LOS PRODUCTOS
+app.get('/productos', (req, res) => {
+
+    // SECUENCIA SQL
+    const sql = 'SELECT * FROM listaproductos';
+
+    // CONEXIÓN A LA BBDD
+    connection.query(sql, (error, results) => {
+        if (error) throw error;
+        if (results.length > 0) {
+            res.json(results);
+        } else {
+            console.log('No hay productos que monstrar. Unlucky life!! 😖')
+        }
+    })
+
+})
+
+// AÑADIR PRODUCTOS (OPCIONAL)
+app.post('/productos/add', (req, res) => {
+
+    // SECUENCIA SQL
+    const sql = 'INSERT INTO listaproductos SET ?';
+
+    // OBJETO DE DATOS DEL NUEVO CLIENTE
+    const nuevoProducto = {
+        nombre: req.body.nombre,
+        stock: req.body.stock,
+        disponibilidad: req.body.disponibilidad,
+        imagen: req.body.imagen
+    };
+
+    //CONEXIÓN A LA BASE DE DATOS
+    connection.query(sql, nuevoProducto, error => {
+        if (error) throw error;
+        console.log('Producto añadido con éxito. 🥳')
+    });
+
+})
+
+// EDITAR PRODUCTOS (OPCIONAL)
+
+// BORRAR PRODUCTOS (OPCIONAL)
