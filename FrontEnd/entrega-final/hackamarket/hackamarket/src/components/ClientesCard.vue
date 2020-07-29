@@ -4,10 +4,14 @@
       <li v-for="(cliente, index) in clientes" :key="cliente.id">
         <img :src="cliente.foto" />
         <h2>{{ cliente.nombre }}</h2>
-        <p class="title">Usuario:</p>
-        <p>{{ cliente.usuario }}</p>
-        <p class="title">Password:</p>
-        <p>{{ cliente.password }}</p>
+        <p>
+          <b>Usuario:</b>
+          {{ cliente.usuario }}
+        </p>
+        <p>
+          <b>Contraseña:</b>
+          {{ cliente.password }}
+        </p>
         <p>{{ cliente.email }}</p>
         <button class="edit" @click="enviarDatosCliente(index)">Editar</button>
         <button class="delete" @click="sweetalertDelete(), enviarIndiceCliente(index)">Borrar</button>
@@ -58,10 +62,11 @@ ul li {
   border: 2px solid #e84a5f;
   border-radius: 15px;
   margin: 0.667rem;
+  display: inline-block;
 }
 
 ul li p {
-  display: inline-block;
+  /* display: inline-block; */
   padding: 0.667rem;
 }
 
@@ -74,9 +79,5 @@ ul li p {
 .delete {
   margin: 0.2rem;
   display: inline-block;
-}
-
-.title {
-  font-weight: bold;
 }
 </style>

@@ -4,16 +4,20 @@
       <li v-for="producto in productos" :key="producto.id">
         <img :src="producto.imagen" />
         <h2>{{ producto.nombre }}</h2>
-        <p class="title">Stock:</p>
-        <p :class="{ red: producto.stock === '0'}">{{ producto.stock }}</p>
-        <p class="title">Disponibilidad:</p>
-        <p
-          :class="{
+        <p>
+          <b>Stock:</b>
+          <span :class="{ red: producto.stock === '0'}">{{ producto.stock }}</span>
+        </p>
+        <p>
+          <b>Disponibilidad:</b>
+          <span
+            :class="{
           green: producto.disponibilidad === 'disponible',
           yellow: producto.disponibilidad === 'proximamente',
           red: producto.disponibilidad === 'no disponible'
           }"
-        >{{ producto.disponibilidad }}</p>
+          >{{ producto.disponibilidad }}</span>
+        </p>
         <button :class="{ hide: producto.stock === '0'}" @click="sweetalertComprar()">Comprar</button>
         <button :class="{ hide: producto.stock === '0'}" @click="sweetalertReservar()">Reservar</button>
       </li>
@@ -75,6 +79,12 @@ export default {
 </script>
 
 <style scoped>
+div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 ul {
   list-style: none;
 }
@@ -83,15 +93,31 @@ ul li {
   border: 2px solid #e84a5f;
   border-radius: 15px;
   margin: 0.667rem;
+  display: inline-block;
 }
 
 ul li p {
-  display: inline-block;
+  display: block;
   padding: 0.667rem;
+}
+
+ul li p span {
+  margin-left: 0.3rem;
+  font-size: 1rem;
 }
 
 ul li img {
   width: 150px;
+}
+
+button {
+  justify-content: flex-end;
+}
+
+img {
+  align-self: center;
+  width: 50px;
+  height: 175px;
 }
 
 .delete {
@@ -118,10 +144,18 @@ ul li img {
 }
 
 .hide {
-  display: none;
+  /* display: none; */
+  visibility: hidden;
 }
 
-.title {
-  font-weight: bold;
+@media (min-width: 700px) {
+  ul li {
+    width: 320px;
+    padding: 0.3rem;
+  }
+
+  ul li p span {
+    font-size: 1.2rem;
+  }
 }
 </style>
